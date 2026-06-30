@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mohamed — English Educator &amp; EdTech Specialist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,12..72,400;0,12..72,500;1,12..72,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#F3F2EC;
+    --paper-2:#EAE8DE;
+    --ink:#14323A;
+    --ink-2:#234A54;
+    --ink-3:#3C636D;
+    --gold:#B07A26;
+    --gold-bright:#D6A341;
+    --line:#D8D3C6;
+    --line-ink:#2E545E;
+    --paper-on-ink:#EFEDE4;
+    --mute-on-ink:#9DB3B8;
+    --max:1080px;
+    --r:14px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Newsreader",Georgia,serif;
+    font-size:19px;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  ::selection{background:var(--gold-bright);color:var(--ink);}
+
+  h1,h2,h3,.display{font-family:"Space Grotesk",system-ui,sans-serif;}
+  .mono{font-family:"Space Mono",ui-monospace,monospace;}
+
+  a{color:inherit;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px;}
+
+  /* eyebrow / labels */
+  .eyebrow{
+    font-family:"Space Mono",monospace;
+    font-size:12px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--gold);
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    margin:0 0 18px;
+  }
+  .eyebrow::before{
+    content:"";width:26px;height:1px;background:var(--gold);display:inline-block;
+  }
+  .on-ink .eyebrow{color:var(--gold-bright);}
+  .on-ink .eyebrow::before{background:var(--gold-bright);}
+
+  /* ---------- header ---------- */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:color-mix(in srgb, var(--paper) 86%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .site .bar{
+    display:flex;align-items:center;justify-content:space-between;
+    height:62px;
+  }
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:600;}
+  .brand .seal{width:30px;height:30px;flex:none;}
+  .brand .name{font-family:"Space Grotesk",sans-serif;font-size:16px;letter-spacing:.01em;}
+  .brand .name b{color:var(--gold);font-weight:700;}
+  nav.links{display:flex;gap:26px;}
+  nav.links a{
+    font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.08em;
+    text-transform:uppercase;text-decoration:none;color:var(--ink-2);
+    padding:6px 0;position:relative;
+  }
+  nav.links a::after{
+    content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--gold);
+    transition:width .25s ease;
+  }
+  nav.links a:hover{color:var(--ink);}
+  nav.links a:hover::after{width:100%;}
+  @media(max-width:720px){nav.links{display:none;}}
+
+  /* ---------- hero ---------- */
+  .hero{padding:84px 0 60px;position:relative;overflow:hidden;}
+  .hero .grid{display:grid;grid-template-columns:1.55fr .9fr;gap:54px;align-items:start;}
+  @media(max-width:820px){.hero .grid{grid-template-columns:1fr;gap:38px;}}
+  .hero h1{
+    font-size:clamp(2.5rem,6.2vw,4.55rem);
+    line-height:1.02;
+    letter-spacing:-.02em;
+    font-weight:600;
+    margin:0 0 26px;
+  }
+  .hero h1 .tt{color:var(--gold);font-style:normal;}
+  .hero h1 em{
+    font-family:"Newsreader",serif;font-style:italic;font-weight:400;color:var(--ink-2);
+  }
+  .lede{font-size:1.16rem;color:var(--ink-2);max-width:42ch;margin:0 0 30px;}
+  .lede b{color:var(--ink);font-weight:500;}
+
+  .chips{display:flex;flex-wrap:wrap;gap:9px;}
+  .chip{
+    font-family:"Space Mono",monospace;font-size:11.5px;letter-spacing:.05em;
+    text-transform:uppercase;color:var(--ink-2);
+    border:1px solid var(--line);border-radius:999px;padding:7px 13px;background:#fff;
+  }
+
+  /* hero side card */
+  .card-fact{
+    background:#fff;border:1px solid var(--line);border-radius:var(--r);
+    padding:26px 26px 8px;box-shadow:0 1px 0 rgba(20,50,58,.03);
+  }
+  .card-fact .row{
+    display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+    padding:14px 0;border-bottom:1px dashed var(--line);
+  }
+  .card-fact .row:last-child{border-bottom:0;}
+  .card-fact .num{
+    font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:2.05rem;
+    color:var(--ink);line-height:1;letter-spacing:-.02em;
+  }
+  .card-fact .num span{color:var(--gold);}
+  .card-fact .lab{
+    font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--ink-3);text-align:right;max-width:13ch;
+  }
+
+  /* ---------- generic section ---------- */
+  .sec{padding:74px 0;border-top:1px solid var(--line);}
+  .sec h2{
+    font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:600;letter-spacing:-.015em;
+    margin:0 0 8px;line-height:1.08;
+  }
+  .sec .sub{color:var(--ink-3);max-width:60ch;margin:0 0 36px;font-size:1.02rem;}
+
+  /* about */
+  .about-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:48px;}
+  @media(max-width:820px){.about-grid{grid-template-columns:1fr;gap:30px;}}
+  .about-grid p{margin:0 0 18px;}
+  .about-grid p:last-child{margin-bottom:0;}
+  .pull{
+    border-left:3px solid var(--gold);padding:4px 0 4px 20px;margin:26px 0;
+    font-family:"Space Grotesk",sans-serif;font-size:1.2rem;line-height:1.4;
+    color:var(--ink);font-weight:500;
+  }
+  .aside-list{list-style:none;margin:0;padding:0;}
+  .aside-list li{padding:15px 0;border-top:1px solid var(--line);}
+  .aside-list li:first-child{border-top:0;padding-top:0;}
+  .aside-list .k{
+    font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.07em;
+    text-transform:uppercase;color:var(--gold);display:block;margin-bottom:4px;
+  }
+  .aside-list .v{font-size:1rem;color:var(--ink-2);}
+
+  /* credentials */
+  .creds{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:#fff;}
+  @media(max-width:680px){.creds{grid-template-columns:1fr;}}
+  .cred{
+    padding:26px 26px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+    position:relative;
+  }
+  .cred:nth-child(2n){border-right:0;}
+  .creds .cred:nth-last-child(-n+2){border-bottom:0;}
+  @media(max-width:680px){
+    .cred{border-right:0;}
+    .creds .cred:nth-last-child(-n+2){border-bottom:1px solid var(--line);}
+    .creds .cred:last-child{border-bottom:0;}
+  }
+  .cred .idx{font-family:"Space Mono",monospace;font-size:11px;color:var(--gold);letter-spacing:.1em;}
+  .cred h3{font-size:1.18rem;font-weight:600;margin:10px 0 4px;letter-spacing:-.01em;}
+  .cred .org{color:var(--ink-3);font-size:.98rem;font-style:italic;}
+  .cred .note{color:var(--ink-2);font-size:.96rem;margin-top:9px;}
+
+  /* experience timeline */
+  .tl{position:relative;margin-top:8px;}
+  .tl .item{
+    display:grid;grid-template-columns:170px 1fr;gap:30px;
+    padding:26px 0;border-top:1px solid var(--line);
+  }
+  .tl .item:first-child{border-top:0;}
+  @media(max-width:680px){.tl .item{grid-template-columns:1fr;gap:8px;}}
+  .tl .when{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.05em;color:var(--gold);padding-top:5px;text-transform:uppercase;}
+  .tl h3{margin:0 0 3px;font-size:1.24rem;font-weight:600;letter-spacing:-.01em;}
+  .tl .place{color:var(--ink-3);font-style:italic;margin-bottom:10px;font-size:.98rem;}
+  .tl ul{margin:0;padding-left:18px;color:var(--ink-2);}
+  .tl ul li{margin:5px 0;font-size:1rem;}
+
+  /* skills two-column */
+  .skills{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;}
+  @media(max-width:760px){.skills{grid-template-columns:1fr;}}
+  .skills .col{padding:30px 30px;background:#fff;}
+  .skills .col:first-child{border-right:1px solid var(--line);}
+  @media(max-width:760px){.skills .col:first-child{border-right:0;border-bottom:1px solid var(--line);}}
+  .skills .col h3{display:flex;align-items:center;gap:11px;font-size:1.05rem;font-weight:600;margin:0 0 18px;letter-spacing:.01em;}
+  .skills .col h3 .dot{width:9px;height:9px;border-radius:50%;background:var(--gold);flex:none;}
+  .skills ul{list-style:none;margin:0;padding:0;}
+  .skills li{padding:9px 0;border-top:1px dashed var(--line);font-size:1rem;color:var(--ink-2);display:flex;gap:11px;}
+  .skills li:first-child{border-top:0;}
+  .skills li b{color:var(--ink);font-weight:500;}
+  .skills li::before{content:"›";color:var(--gold);font-family:"Space Grotesk",sans-serif;}
+
+  /* ---------- builds (dark) ---------- */
+  .builds{background:var(--ink);color:var(--paper-on-ink);border-top:0;}
+  .builds .head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:34px;}
+  .builds h2{color:#fff;}
+  .builds .sub{color:var(--mute-on-ink);}
+  .builds .total{
+    text-align:right;
+  }
+  .builds .total .n{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:2.6rem;color:var(--gold-bright);line-height:1;letter-spacing:-.02em;}
+  .builds .total .l{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute-on-ink);}
+
+  .ledger{border-top:1px solid var(--line-ink);}
+  .ledger .b{
+    display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;
+    padding:20px 4px;border-bottom:1px solid var(--line-ink);
+    transition:padding-left .25s ease,background .25s ease;
+  }
+  .ledger .b:hover{padding-left:14px;background:rgba(214,163,65,.05);}
+  .ledger .b .meta{min-width:0;}
+  .ledger .b h3{margin:0 0 4px;font-size:1.18rem;font-weight:600;color:#fff;letter-spacing:-.01em;}
+  .ledger .b p{margin:0;color:var(--mute-on-ink);font-size:.96rem;}
+  .ledger .b .tag{font-family:"Space Mono",monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-bright);margin-right:10px;}
+  .ledger .b .count{
+    font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:1.7rem;
+    color:var(--paper-on-ink);white-space:nowrap;letter-spacing:-.01em;text-align:right;
+  }
+  .ledger .b .count small{display:block;font-family:"Space Mono",monospace;font-weight:400;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute-on-ink);margin-top:2px;}
+
+  /* frameworks strip */
+  .frame .strip{display:flex;flex-wrap:wrap;gap:10px;}
+  .frame .f{
+    font-family:"Space Mono",monospace;font-size:12.5px;letter-spacing:.05em;
+    border:1px solid var(--line);border-radius:8px;padding:11px 16px;background:#fff;color:var(--ink-2);
+  }
+  .frame .f b{color:var(--gold);font-weight:700;}
+
+  /* contact (dark) */
+  .contact{background:var(--ink-2);color:var(--paper-on-ink);border-top:0;padding:78px 0;}
+  .contact h2{color:#fff;font-size:clamp(2rem,4.5vw,3.1rem);max-width:18ch;margin:0 0 14px;letter-spacing:-.02em;}
+  .contact .sub{color:var(--mute-on-ink);max-width:52ch;}
+  .contact .meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px 40px;margin-top:34px;max-width:640px;}
+  @media(max-width:560px){.contact .meta{grid-template-columns:1fr;}}
+  .contact .meta a, .contact .meta span{
+    display:flex;justify-content:space-between;gap:14px;align-items:baseline;
+    padding:15px 0;border-bottom:1px solid var(--line-ink);text-decoration:none;color:var(--paper-on-ink);
+  }
+  .contact .meta .k{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-bright);}
+  .contact .meta a:hover .v{color:var(--gold-bright);}
+  .contact .meta .v{transition:color .2s ease;}
+
+  footer.end{background:var(--ink);color:var(--mute-on-ink);padding:30px 0;font-family:"Space Mono",monospace;font-size:11.5px;letter-spacing:.04em;}
+  footer.end .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center;}
+  footer.end .ar{font-family:"Newsreader",serif;font-size:15px;letter-spacing:0;color:var(--paper-on-ink);direction:rtl;}
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1;transform:none;transition:none;}
+  }
+  :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:3px;}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="Home">
+      <svg class="seal" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="20" cy="20" r="18.5" stroke="var(--gold)" stroke-width="1"/>
+        <path d="M20 8c-6.6 0-12 5.4-12 12 0 2 .5 3.9 1.4 5.6" stroke="var(--ink)" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M20 12.5c-4.1 0-7.5 3.4-7.5 7.5 0 3 1 4.8 2.4 6.6" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M20 17c-1.7 0-3 1.3-3 3 0 2.8 1.6 5.2 3.7 7.4" stroke="var(--ink)" stroke-width="1.6" stroke-linecap="round"/>
+        <circle cx="20" cy="20" r="1.4" fill="var(--gold)"/>
+      </svg>
+      <span class="name">Mohamed&nbsp;<b>·</b>&nbsp;Learn to Impact</span>
+    </a>
+    <nav class="links" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#credentials">Credentials</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#builds">Builds</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap grid">
+      <div class="reveal">
+        <p class="eyebrow">English Educator · EdTech Specialist · Riyadh</p>
+        <h1>First I build the <span class="tt">lesson.</span><br><em>Then</em> I build the tool that <span class="tt">teaches it.</span></h1>
+        <p class="lede"><b>Mohamed [Surname]</b> — an English language teacher with 15+ years across Egypt and Saudi Arabia, now designing the digital learning products he once wished he had in the room.</p>
+        <div class="chips" aria-label="Headline qualifications">
+          <span class="chip">CELTA</span>
+          <span class="chip">TEFL Diploma (UK)</span>
+          <span class="chip">ETEC Licence</span>
+          <span class="chip">Ed. Leadership Dip.</span>
+          <span class="chip">MA TEFL · candidate</span>
+        </div>
+      </div>
+
+      <div class="card-fact reveal" aria-label="At a glance">
+        <div class="row">
+          <div class="num" data-count="15" data-suffix="+">15+</div>
+          <div class="lab">Years in the classroom</div>
+        </div>
+        <div class="row">
+          <div class="num">2</div>
+          <div class="lab">Countries taught · Egypt &amp; KSA</div>
+        </div>
+        <div class="row">
+          <div class="num">4,600<span>+</span></div>
+          <div class="lab">Practice questions authored</div>
+        </div>
+        <div class="row">
+          <div class="num">5</div>
+          <div class="lab">Certifications &amp; licences</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="sec" id="about">
+    <div class="wrap">
+      <p class="eyebrow reveal">About</p>
+      <div class="about-grid">
+        <div class="reveal">
+          <h2 style="margin-bottom:18px;">A practitioner who ships.</h2>
+          <p>I have spent over fifteen years teaching English to young learners and teenagers — first in Egypt, now in a national middle school in Riyadh. Time in the room taught me what actually moves a learner forward, and where ordinary materials fall short.</p>
+          <p>So I started building. Under my <b>Learn to Impact</b> brand I design self-contained, offline-capable learning apps and classroom-ready document kits — exam prep, reading and grammar units, model-answer libraries — each grounded in a named pedagogical framework rather than guesswork.</p>
+          <p class="pull">Pedagogy tells me what to build. Engineering lets me build it at scale — thousands of questions, not a worksheet at a time.</p>
+          <p>I am completing an MA in TEFL at Arab Open University (Cairo) and now working toward a full transition into the EdTech industry, where classroom credibility and the ability to actually build the product are still a rare pairing.</p>
+        </div>
+        <div class="reveal">
+          <ul class="aside-list">
+            <li><span class="k">Current role</span><span class="v">English teacher, national middle school — Riyadh, Saudi Arabia</span></li>
+            <li><span class="k">Focus</span><span class="v">EFL / ESL · exam preparation · instructional design · learning-product development</span></li>
+            <li><span class="k">Curricula</span><span class="v">Saudi MOE — Super Goal &amp; Mega Goal · McGraw-Hill Reading Wonders</span></li>
+            <li><span class="k">Languages</span><span class="v">Arabic (native) · English (near-native) — bilingual &amp; RTL-fluent design</span></li>
+            <li><span class="k">Brand</span><span class="v">Learn to Impact — digital educational products</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREDENTIALS -->
+  <section class="sec" id="credentials">
+    <div class="wrap">
+      <p class="eyebrow reveal">Certifications &amp; Qualifications</p>
+      <h2 class="reveal">The paperwork behind the practice.</h2>
+      <p class="sub reveal">Cambridge-, UK-, and Saudi-regulated credentials, plus a postgraduate degree in progress.</p>
+      <div class="creds reveal">
+        <div class="cred">
+          <span class="idx">01</span>
+          <h3>CELTA</h3>
+          <p class="org">Cambridge Assessment English</p>
+          <p class="note">The internationally recognised benchmark for communicative English language teaching.</p>
+        </div>
+        <div class="cred">
+          <span class="idx">02</span>
+          <h3>TEFL Diploma</h3>
+          <p class="org">UK-regulated · Level 5</p>
+          <p class="note">Advanced diploma in teaching English as a foreign language.</p>
+        </div>
+        <div class="cred">
+          <span class="idx">03</span>
+          <h3>Professional Teaching Licence</h3>
+          <p class="org">ETEC · Saudi Arabia</p>
+          <p class="note">National licensure from the Education &amp; Training Evaluation Commission.</p>
+        </div>
+        <div class="cred">
+          <span class="idx">04</span>
+          <h3>Diploma in Educational Leadership</h3>
+          <p class="org">Leadership &amp; management</p>
+          <p class="note">Grounding in school leadership, planning, and team development.</p>
+        </div>
+        <div class="cred">
+          <span class="idx">05</span>
+          <h3>MA in TEFL — in progress</h3>
+          <p class="org">Arab Open University, Cairo</p>
+          <p class="note">Postgraduate study across language testing, classroom management, productive skills, and technology in the classroom.</p>
+        </div>
+        <div class="cred">
+          <span class="idx">06</span>
+          <h3>Continuous professional development</h3>
+          <p class="org">Self-directed</p>
+          <p class="note">Instructional design, learning-app development, and bilingual content engineering.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="sec" id="experience">
+    <div class="wrap">
+      <p class="eyebrow reveal">Experience</p>
+      <h2 class="reveal">Fifteen years, two countries, one throughline.</h2>
+      <p class="sub reveal">Dates and school names are placeholders — swap in your own to finish this section.</p>
+      <div class="tl reveal">
+        <div class="item">
+          <div class="when">[Year]–Present</div>
+          <div>
+            <h3>English Language Teacher</h3>
+            <p class="place">National middle school — Riyadh, Saudi Arabia</p>
+            <ul>
+              <li>Teach English across Saudi MOE curricula (Super Goal, Mega Goal) to mixed-ability middle-school learners.</li>
+              <li>Designed and deployed self-built revision apps for students — GAT, STEP, and Grade 9 exam preparation.</li>
+              <li>Submitted the "بصمة أثر" (Impact Footprint) initiative, recognising the in-house student tools I developed.</li>
+              <li>Lead a Quran memorization circle supported by a custom Arabic RTL tracking workbook.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="item">
+          <div class="when">[Years]</div>
+          <div>
+            <h3>English Language Teacher</h3>
+            <p class="place">[School / institution] — Egypt</p>
+            <ul>
+              <li>Taught English to young learners and teenagers across a range of levels (A1–B2).</li>
+              <li>Built classroom and competition materials, including creative and project-based units.</li>
+              <li>Developed early instructional-design and materials-creation practice that later became Learn to Impact.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="item">
+          <div class="when">Ongoing</div>
+          <div>
+            <h3>Founder &amp; Builder — Learn to Impact</h3>
+            <p class="place">Independent EdTech &amp; instructional design</p>
+            <ul>
+              <li>Author large-scale, framework-aligned learning apps and document kits (see Selected Builds).</li>
+              <li>Run a Node.js / Python / vanilla-JS pipeline to produce apps, slide decks, and formatted documents at scale.</li>
+              <li>Mentor colleagues — including a full CV, interview-prep, and 24-month development plan for a fellow teacher.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="sec" id="skills">
+    <div class="wrap">
+      <p class="eyebrow reveal">Skills</p>
+      <h2 class="reveal">Two skill sets, one person.</h2>
+      <p class="sub reveal">The combination is the point: I can teach the thing, then build the tool that teaches it.</p>
+      <div class="skills reveal">
+        <div class="col">
+          <h3><span class="dot"></span> Teaching &amp; pedagogy</h3>
+          <ul>
+            <li><b>Communicative language teaching</b> — productive &amp; receptive skills</li>
+            <li><b>Exam preparation</b> — IELTS, GAT, STEP, Saudi MOE programmes</li>
+            <li><b>Differentiation</b> — mixed-ability and A1–A2 learner support</li>
+            <li><b>Classroom management</b> — grounded in Scrivener's framework</li>
+            <li><b>Assessment &amp; language testing</b> — design and analysis</li>
+            <li><b>Curriculum &amp; syllabus design</b> — CEFR-aligned</li>
+            <li><b>Lesson &amp; materials creation</b> — at classroom and course scale</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h3><span class="dot"></span> EdTech &amp; building</h3>
+          <ul>
+            <li><b>Learning-app development</b> — offline-capable HTML, vanilla JavaScript</li>
+            <li><b>Instructional design</b> — aligned to ELEOT 2.0, CEFR, CCSS</li>
+            <li><b>Spaced-repetition &amp; practice systems</b></li>
+            <li><b>Content pipelines</b> — Node.js with pptxgenjs &amp; docx</li>
+            <li><b>Automation &amp; validation</b> — Python, PDF rendering</li>
+            <li><b>Bilingual &amp; RTL design</b> — Arabic / English interfaces</li>
+            <li><b>Product &amp; brand</b> — building Learn to Impact end to end</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUILDS (dark) -->
+  <section class="sec builds on-ink" id="builds">
+    <div class="wrap">
+      <div class="head">
+        <div class="reveal">
+          <p class="eyebrow">Selected Builds</p>
+          <h2>A shelf of tools, not a list of claims.</h2>
+          <p class="sub">A sample of the apps and kits built under Learn to Impact. The counts are real — this is authored, validated content.</p>
+        </div>
+        <div class="total reveal">
+          <div class="n" data-count="4651">4,651</div>
+          <div class="l">questions across these six apps</div>
+        </div>
+      </div>
+
+      <div class="ledger reveal">
+        <div class="b">
+          <div class="meta">
+            <h3>IELTS Academic Writing — Band 7–8</h3>
+            <p><span class="tag">App</span>Model-answer documents plus contrastive Band 6 vs. Band 8 banks.</p>
+          </div>
+          <div class="count">1,055<small>questions</small></div>
+        </div>
+        <div class="b">
+          <div class="meta">
+            <h3>IELTS Speaking Lab</h3>
+            <p><span class="tag">App</span>Practice lab with an annotated model-answer library.</p>
+          </div>
+          <div class="count">1,010<small>questions</small></div>
+        </div>
+        <div class="b">
+          <div class="meta">
+            <h3>GAT Preparation App</h3>
+            <p><span class="tag">App</span>Saudi General Aptitude Test, with bilingual Arabic/English toggle.</p>
+          </div>
+          <div class="count">1,010<small>questions</small></div>
+        </div>
+        <div class="b">
+          <div class="meta">
+            <h3>STEP Preparation App</h3>
+            <p><span class="tag">App</span>Four practice modes, companion PDFs, and a 7-day study plan.</p>
+          </div>
+          <div class="count">961<small>questions</small></div>
+        </div>
+        <div class="b">
+          <div class="meta">
+            <h3>Grade 9 Super Goal 3 Revision</h3>
+            <p><span class="tag">App</span>Exam-aligned format with model-answer and practice booklets.</p>
+          </div>
+          <div class="count">360<small>questions</small></div>
+        </div>
+        <div class="b">
+          <div class="meta">
+            <h3>Azhar Thanaweya Revision</h3>
+            <p><span class="tag">App</span>Targeted revision for secondary Azhar students.</p>
+          </div>
+          <div class="count">255<small>questions</small></div>
+        </div>
+        <div class="b">
+          <div class="meta">
+            <h3>Pre-A1 English Foundation Course</h3>
+            <p><span class="tag">Course</span>A 10-unit syllabus with a 100-slide PowerPoint series.</p>
+          </div>
+          <div class="count">10<small>units · 100 slides</small></div>
+        </div>
+        <div class="b">
+          <div class="meta">
+            <h3>Grade 4 ELL Reading &amp; Grammar Kits</h3>
+            <p><span class="tag">Kits</span>Built on McGraw-Hill Reading Wonders, aligned to CELTA / ELEOT 2.0 / CEFR / CCSS.</p>
+          </div>
+          <div class="count">Multi<small>unit kits</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRAMEWORKS -->
+  <section class="sec frame">
+    <div class="wrap">
+      <p class="eyebrow reveal">Frameworks I build with</p>
+      <h2 class="reveal" style="margin-bottom:26px;">Grounded, not improvised.</h2>
+      <div class="strip reveal">
+        <span class="f"><b>CELTA</b> · communicative method</span>
+        <span class="f"><b>CEFR</b> · level alignment</span>
+        <span class="f"><b>ELEOT 2.0</b> · learning environment</span>
+        <span class="f"><b>CCSS</b> · standards mapping</span>
+        <span class="f"><b>Scrivener</b> · classroom management</span>
+        <span class="f"><b>Vygotsky</b> · ZPD &amp; scaffolding</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact on-ink" id="contact">
+    <div class="wrap">
+      <p class="eyebrow reveal">Get in touch</p>
+      <h2 class="reveal">Let's build something that teaches well.</h2>
+      <p class="sub reveal">Open to EdTech roles, instructional-design work, and collaboration. Replace the placeholders below with your real details.</p>
+      <div class="meta reveal">
+        <a href="mailto:[your-email]"><span class="k">Email</span><span class="v">[your email]</span></a>
+        <a href="#"><span class="k">LinkedIn</span><span class="v">[your LinkedIn URL]</span></a>
+        <span><span class="k">Phone</span><span class="v">[your number]</span></span>
+        <span><span class="k">Location</span><span class="v">Riyadh, Saudi Arabia</span></span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="end">
+  <div class="wrap">
+    <span>© <span id="yr"></span> Mohamed [Surname] · Learn to Impact</span>
+    <span class="ar">بصمة أثر — to leave a lasting impact</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Scroll reveal
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){
+    if(reduce){ el.classList.add('in'); } else { io.observe(el); }
+  });
+
+  // Count-up for elements with data-count
+  function animateCount(el){
+    var target = parseInt(el.getAttribute('data-count'),10);
+    var suffix = el.getAttribute('data-suffix') || '';
+    if(reduce || isNaN(target)){ return; }
+    var raw = el.textContent;
+    var dur = 1100, start = null;
+    function step(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts-start)/dur, 1);
+      var eased = 1 - Math.pow(1-p, 3);
+      var val = Math.floor(eased*target);
+      el.textContent = val.toLocaleString() + (p===1 ? '' : '');
+      if(p<1){ requestAnimationFrame(step); } else { el.innerHTML = raw; }
+    }
+    requestAnimationFrame(step);
+  }
+  var cio = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ animateCount(e.target); cio.unobserve(e.target); }
+    });
+  }, {threshold:0.6});
+  document.querySelectorAll('[data-count]').forEach(function(el){ cio.observe(el); });
+</script>
+</body>
+</html>
